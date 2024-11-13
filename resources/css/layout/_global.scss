@@ -1,0 +1,152 @@
+
+
+
+// Margins
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mr-0 {
+    margin-right: 0 !important;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+// Paddings
+.pt-0 {
+    padding-top: 0 !important;
+}
+.pr-0 {
+    padding-right: 0 !important;
+}
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+.pl-0 {
+    padding-left: 0 !important;
+}
+.p-5{
+    padding: 25px;
+}
+
+.w-100{
+    width: 100%;
+}
+
+// Justify Content
+.justify-center {
+    justify-content: center !important;
+}
+.justify-between {
+    justify-content: space-between !important;
+}
+.justify-around {
+    justify-content: space-around !important;
+}
+
+// Align Items
+.align-items-center {
+    align-items: center !important;
+}
+.align-items-start {
+    align-items: flex-start !important;
+}
+.align-items-end {
+    align-items: flex-end !important;
+}
+.text-center{
+    text-align: center;
+}
+.font-bold{
+    font-weight: bold;
+}
+
+h1,h2,h3,h4{
+    color: var(--text-color);
+}
+
+h1{
+    @include responsive-font-size(25px,70px);
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 60px;
+    text-shadow: 12px 8px 34px rgba(0,0,0,0.55);
+    @include on-small{
+        line-height: 35px;
+    }
+    @include on-extra-small{
+        line-height: 30px;
+    }
+}
+
+h4{
+    @include responsive-font-size(18px,30px);
+    text-transform: uppercase;
+    font-weight: 200;
+    line-height: 30px;
+    text-shadow: 12px 8px 34px rgba(0,0,0,0.55);
+
+    @include on-small{
+        line-height: 20px;
+    }
+    @include on-extra-small{
+        line-height: 18px;
+    }
+}
+
+p{
+    text-shadow: 12px 8px 34px rgba(0,0,0,0.55);
+    @include responsive-font-size(10px,15px);
+    color: $text-color;
+}
+
+.flex{
+    display: flex;
+}
+.items-center{
+    align-items: center;
+}
+
+.title{
+    margin: 0;
+    .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+}
+.sub-title{
+    margin: 0;
+}
+
+// Global shadow classes
+.shadow-none {
+    box-shadow: none;
+}
+
+.shadow-sm {
+    box-shadow: 0 1px 3px $shadow-color-light, 0 1px 2px $shadow-color-light;
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px $shadow-color-medium, 0 1px 3px $shadow-color-medium;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 20px $shadow-color-dark, 0 3px 6px $shadow-color-dark;
+}
+
+.shadow-xl {
+    box-shadow: 0 15px 30px $shadow-color-dark, 0 5px 15px $shadow-color-dark;
+}
+
+
+.container-fluid {
+    //width: 100%;
+    padding-right: $grid-gutter-width;
+    padding-left: $grid-gutter-width;
+    margin-right: auto;
+    margin-left: auto;
+}

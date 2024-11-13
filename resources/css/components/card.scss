@@ -1,0 +1,60 @@
+// resources/sass/components/_card.scss
+
+.card {
+    //border: 1px solid rgba(255,255,255,.1);
+    border-radius: $border-radius;
+    padding: $spacer-double;
+    margin-bottom: 16px;
+    height: auto;
+    overflow: hidden;
+    //background: rgba(255,255,255,.1);
+    color: var(--text-color);
+
+    &-header {
+        font-weight: bold;
+        border-bottom: 1px solid rgba(255,255,255,.1);
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+
+    }
+
+    &-body {
+        margin-bottom: 8px;
+    }
+
+    &-footer {
+        font-size: $font-size-sm;
+        border-top: 1px solid rgba(255,255,255,.1);
+        margin-top: 8px;
+        padding-top: 8px;
+    }
+
+    @include glassy();
+}
+
+
+.w-sm {
+    width: 150px;
+}
+
+.w-md {
+    width: 300px;
+}
+
+.w-lg {
+    width: 450px;
+}
+
+.w-xl {
+    width: 600px;
+}
+
+.w-full {
+    width: 100%;
+}
+
+@each $size, $value in (12px, 24px, 36px, 48px, 60px) {
+    .w-#{$value} {
+        width: $value;
+    }
+}

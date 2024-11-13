@@ -1,0 +1,133 @@
+// Simplified grid.scss
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-breakpoints: (
+    xs: 476px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
+@mixin media-breakpoint-up($name) {
+    @if map-has-key($grid-breakpoints, $name) {
+        $min-width: map-get($grid-breakpoints, $name);
+        @if $min-width != 0 {
+            @media (min-width: $min-width) {
+                @content;
+            }
+        } @else {
+            @content;
+        }
+    } @else {
+        @error "No value for `#{$name}` in `$grid-breakpoints` map.";
+    }
+}
+
+@function span-columns($columns) {
+    @return ($columns / $grid-columns) * 100%;
+}
+
+@mixin make-col-ready() {
+    position: relative;
+    width: 100%;
+    padding-right: $grid-gutter-width / 2;
+    padding-left: $grid-gutter-width / 2;
+}
+
+@mixin make-col($size) {
+    flex: 0 0 span-columns($size);
+    max-width: span-columns($size);
+}
+
+//.container {
+//    padding-right: $grid-gutter-width / 2;
+//    padding-left: $grid-gutter-width / 2;
+//    margin-right: auto;
+//    margin-left: auto;
+//
+//    @each $breakpoint, $value in $grid-breakpoints {
+//        @include media-breakpoint-up($breakpoint) {
+//            max-width: $value;
+//        }
+//    }
+//}
+
+// Mixin for container
+@mixin container($breakpoint) {
+    @if $breakpoint == xs {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    } @else {
+        max-width: map-get($grid-breakpoints, $breakpoint);
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+// Base container styles
+.container {
+    @include container(xs);
+}
+
+
+// Media queries for each breakpoint
+@each $breakpoint, $value in $grid-breakpoints {
+    @if $breakpoint != xs {
+        @media (min-width: $value) {
+            .container-#{$breakpoint} {
+                @include container($breakpoint);
+            }
+        }
+    }
+}
+
+// Mixin for row
+@mixin row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -($grid-gutter-width / 2);
+    margin-right: -($grid-gutter-width / 2);
+    flex-flow: column;
+}
+
+// Base row styles
+.row {
+    @include row;
+}
+
+// Mixin for column
+@mixin col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+    padding-left: $grid-gutter-width / 2;
+    padding-right: $grid-gutter-width / 2;
+}
+
+// Generate column classes for each breakpoint
+@each $breakpoint, $value in $grid-breakpoints {
+    @for $i from 1 through $grid-columns {
+        .col-#{$breakpoint}-#{$i} {
+            @include col($i);
+        }
+    }
+}
+
+// Additional utility classes for full-width columns
+@each $breakpoint, $value in $grid-breakpoints {
+    .col-#{$breakpoint} {
+        flex-basis: 0;
+        flex-grow: 1;
+        max-width: 100%;
+        padding-left: $grid-gutter-width / 2;
+        padding-right: $grid-gutter-width / 2;
+    }
+}
+
+.col-auto {
+    flex: 0 0 auto;
+    width: auto;
+}

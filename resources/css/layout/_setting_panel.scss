@@ -1,0 +1,79 @@
+$panel-width: 300px;
+$panel-bg-color: linear-gradient(100deg, var(--primary-color), var(--secondary-color));
+$panel-header-bg-color: #333;
+$panel-header-text-color: #fff;
+$transition-duration: 0.3s;
+$box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+
+.setting-btn{
+    @include glassy();
+    border-radius: 50% 0 0 50%;
+    padding: 5px;
+    position: fixed;
+    right:2px;
+    top: 50%;
+    height: 30px;
+    width: 30px;
+    color: var(--text-color);
+    transition: all $transition-duration ease-in-out;
+    z-index: 1111;
+    &:hover{
+        cursor: pointer;
+    }
+    &.active{
+        right: 300px; // Show panel
+        @include on-small{
+            right: 200px;
+        }
+        @include on-extra-small{
+            right: 200px;
+        }
+    }
+    svg{
+        animation: spin 2s infinite linear;
+
+    }
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: $panel-width;
+    height: 100%;
+    @include glassy();
+    box-shadow: $box-shadow;
+    transition: transform $transition-duration ease-in-out;
+    transform: translateX(100%); // Initially hidden off-screen
+    //border-left: 1px solid var(--primary-color);
+    text-align: center;
+    z-index: 1111;
+
+    @include on-small{
+        width: $panel-width / 3 * 2;
+    }
+
+    @include on-extra-small{
+        width: $panel-width / 3 * 2;
+    }
+
+    &.active {
+        transform: translateX(0); // Show panel
+    }
+
+    .settings-header {
+        color: $panel-header-text-color;
+        padding: 1rem;
+        text-align: center;
+
+        h2 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+    }
+
+    .settings-content {
+        padding: 1rem;
+    }
+}

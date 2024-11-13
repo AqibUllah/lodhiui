@@ -1,0 +1,140 @@
+@use 'sass:color';
+@import '../layout/vars';
+@import '../layout/mixins';
+
+// Gradient Variables
+$pink-gradient: linear-gradient(45deg, $primary-color, $secondary-color);
+$dark-gradient: linear-gradient(45deg, #333333, #000000);
+$blue-gradient: linear-gradient(45deg, #0056b3, #007bff);
+$yellow-gradient: linear-gradient(45deg, #0CC0DF, #FFDE59);
+$darkBlue-gradient: linear-gradient(45deg, #3533CD, #000000);
+
+// Theme Area Styling
+.theme-box {
+    height: auto;
+    width: auto;
+    padding: 20px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    @include on-small{
+        height: 30px;
+        width: 30px;
+        padding: 2px;
+    }
+    @include on-extra-small{
+        height: 30px;
+        width: 30px;
+        padding: 0;
+    }
+
+    &:hover{
+        transform: scale(1.1);
+        transition: all .1s ease-in-out;
+    }
+
+    // Gradient Themes
+    &.theme-gd-pink {
+        background: $pink-gradient;
+    }
+
+    &.theme-gd-dark {
+        background: $dark-gradient;
+    }
+
+    &.theme-gd-blue {
+        background: $blue-gradient;
+    }
+
+    &.theme-gd-yellow {
+        background: $yellow-gradient;
+    }
+    &.theme-gd-yellow {
+        background: $yellow-gradient;
+    }
+    &.theme-gd-dark-blue {
+        background: $darkBlue-gradient;
+    }
+
+    // Active State
+    &.active {
+        border: 2px solid var(--text-color);
+    }
+}
+
+
+.theme-gd-pink{
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --success-color: #38c172;
+    --danger-color: #e3342f;
+    --warning-color: #f6993f;
+    --info-color: #6cb2eb;
+    --text-color: #f8f9fa;
+    --text-color-lightness: color.lightness($text-color);
+    --text-color-darken: color.adjust($text-color,$lightness:-30%,$alpha:-0.4);
+    --text-color-darkness: color.scale($text-color,$lightness:-10%);
+}
+.theme-gd-yellow{
+    --primary-color: #0CC0DF;
+    --secondary-color: #FFDE59;
+    --success-color: #38c172;
+    --danger-color: #e3342f;
+    --warning-color: #f6993f;
+    --info-color: #6cb2eb;
+    --text-color: #4d4a4a;
+    --text-color-lightness: color.lightness($text-color);
+    --text-color-darken: color.adjust($text-color,$lightness:-30%,$alpha:-0.4);
+    --text-color-darkness: color.scale($text-color,$lightness:-10%);
+}
+
+.theme-gd-dark{
+    --primary-color: #737373;
+    --secondary-color: #000000;
+    --success-color: #38c172;
+    --danger-color: #e3342f;
+    --warning-color: #f6993f;
+    --info-color: #6cb2eb;
+    --text-color: #f8f9fa;
+    --text-color-lightness: color.lightness($text-color);
+    --text-color-darken: color.adjust($text-color,$lightness:-30%,$alpha:-0.4);
+    --text-color-darkness: color.scale($text-color,$lightness:-10%);
+}
+
+.theme-gd-blue{
+    --primary-color: #99BFFF;
+    --secondary-color: #3E63FF;
+    --success-color: #38c172;
+    --danger-color: #e3342f;
+    --warning-color: #f6993f;
+    --info-color: #6cb2eb;
+    --text-color: #f8f9fa;
+    --text-color-lightness: color.lightness($text-color);
+    --text-color-darken: color.adjust($text-color,$lightness:-30%,$alpha:-0.4);
+    --text-color-darkness: color.scale($text-color,$lightness:-10%);
+}
+
+.theme-gd-green{
+    --primary-color: #8C52FF;
+    --secondary-color: #00BF63;
+}
+.theme-gd-gray{
+    --primary-color: #253439;
+    --secondary-color: #121b1e;
+}
+.theme-gd-dark-blue{
+    --primary-color: #3533CD;
+    --secondary-color: #000000;
+    --text-color: #f8f9fa;
+    --text-color-lightness: color.lightness($text-color);
+    --text-color-darken: color.adjust($text-color,$lightness:-30%,$alpha:-0.4);
+    --text-color-darkness: color.scale($text-color,$lightness:-10%);
+}

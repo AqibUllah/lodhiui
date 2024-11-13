@@ -1,0 +1,77 @@
+// resources/css/_vars.scss
+
+@use 'sass:math';
+@use 'sass:color';
+
+// Colors
+
+$primary-color: #4B00E0;
+$secondary-color: #E00E98;
+$success-color: #38c172;
+$danger-color: #e3342f;
+$warning-color: #f6993f;
+$info-color: #6cb2eb;
+$text-color: #f8f9fa;
+$text-color-lightness: color.lightness($text-color);
+//$text-color-darken: color.adjust($text-color,$lightness:-30%,$alpha:-0.4);
+$text-color-darkness: color.scale($text-color,$lightness:-10%);
+
+// Fonts
+$font-family-base: 'Helvetica Neue', Arial, sans-serif;
+$font-size-base: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-sm: 0.875rem;
+$font-size-xs: 0.575rem;
+
+// Spacing
+$spacer: 8px;
+$spacer-half: calc($spacer / 2);
+$spacer-double: $spacer * 2;
+
+// Borders
+$border-radius: 0.25rem;
+$border-radius-lg: 0.5rem;
+$border-radius-sm: 0.125rem;
+$border-radius-xl: 100px;
+
+
+// grid Variables
+$grid-columns: 12;
+$grid-gutter-width: 1.5rem;
+
+$grid-breakpoints: (
+    'xs': 0,
+    'sm': 576px,
+    'md': 768px,
+    'lg': 992px,
+    'xl': 1200px,
+    'xxl': 1400px
+);
+
+$spacing-scale: (
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 0.75rem,
+    4: 1rem,
+    5: 1.5rem,
+    6: 2rem,
+    7: 2.5rem,
+    8: 3rem,
+    9: 4rem,
+    10: 5rem,
+);
+
+// Variables for shadow colors
+$shadow-color-light: rgba(0, 0, 0, 0.1);
+$shadow-color-medium: rgba(0, 0, 0, 0.2);
+$shadow-color-dark: rgba(0, 0, 0, 0.3);
+
+
+/* tabs Variables */
+$tab-active-color: #3498db;
+$tab-hover-color: #2980b9;
+$tab-background-color: #ecf0f1;
+$tab-border-color: #bdc3c7;
+$tab-content-background: #ffffff;
+

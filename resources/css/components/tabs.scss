@@ -1,0 +1,40 @@
+@import "../layout/vars";
+@import "../layout/mixins";
+/* Base Styles */
+.tabs {
+    display: flex;
+    border-radius: $border-radius-lg;
+    &__tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        background: rgba(255,255,255,.1);
+        border: 1px solid $tab-border-color;
+        color: $text-color;
+        @include tab-transition(background-color, 0.3s, ease);
+
+        &:first-child{
+            border-top-left-radius: $border-radius-lg;
+        }
+
+        &:hover {
+            background-color: var(--secondary-color);
+            color: $text-color;
+        }
+
+        &--active {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border-bottom: 1px solid $tab-active-color;
+        }
+    }
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid $tab-border-color;
+    border-radius: 0 0 $border-radius-lg $border-radius-lg;
+    @include glassy();
+}
+
+/* Example Usage */
+/* Add your custom styles or overrides below this comment */

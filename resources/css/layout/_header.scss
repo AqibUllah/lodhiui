@@ -1,0 +1,156 @@
+@import './vars';
+@import './mixins';
+
+.header {
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 700px;
+    padding: $spacer-half $spacer-double;
+    //background: rgba(255, 255, 255, 0.1);
+    @include glassy();
+    @include flex-center();
+    @include boxShadow();
+    border-radius: $border-radius-xl;
+    position: absolute;
+    z-index: 111;
+    justify-content: space-between;
+
+    @include on-medium {
+        max-width: 300px;
+        //padding: $spacer-half $spacer;
+    }
+
+    @include on-small {
+        min-width: 500px;
+        padding: $spacer-half;
+    }
+
+    @include on-extra-small {
+        min-width: auto;
+        padding: $spacer-half;
+    }
+
+    .logo {
+        @include responsive-font-size(20px, 30px);
+        font-weight: bolder;
+        color: $text-color;
+        padding-right: 30px;
+        @include colorAnimation(rgba(255,255,255,.1),rgba(255,255,255,.6));
+        display: ruby;
+        img{
+            height: 100px;
+            width: 100px;
+        }
+        @include on-small{
+            margin: 0 170px;
+            //padding: 0;
+        }
+        @include on-extra-small{
+            margin: 0 70px;
+            padding: 0;
+        }
+    }
+
+    .nav {
+        flex-grow: 1;
+        flex-shrink: 0;
+        @include on-extra-small {
+            display: none;
+        }
+        @include on-small {
+            display: none;
+        }
+
+        .menus {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+
+            .menu-item {
+                line-height: 1.5rem;
+                margin-right: 20px;
+                transition: all 0.2s ease-in-out;
+                @include menu-magic(below, 100px);
+
+                @include on-small {
+                    line-height: .5rem;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: var(--text-color);
+                    @include responsive-font-size(12px, 15px);
+                    position: relative;
+                    gap: $spacer-half;
+                    transition: all 0.2s ease-in-out;
+                    @include flex-center();
+
+                    &:hover {
+                        color: var(--text-color-dark);
+                        margin-left: 5px;
+                    }
+
+                    .menu-icon {
+                        height: 15px;
+                        width: 15px;
+
+                        @include on-small {
+                            height: 10px;
+                            width: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    .menu-button {
+        display: none;
+        color: var(--text-color);
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        font-weight: bolder;
+        outline: none;
+        background: rgba(255,255,255,.2);
+        border-radius: 50%;
+        padding: 5px;
+
+        &:hover {
+            cursor: pointer;
+            color: var(--text-color-darkness);
+        }
+
+        @include on-extra-small {
+            display: block;
+        }
+        @include on-small {
+            display: block;
+        }
+    }
+
+
+    .profile {
+        @include responsiveLogo(47px, 47px);
+        background: linear-gradient(70deg, var(--primary-color), var(--secondary-color));
+        color: $text-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        @include responsive-font-size(12px, 18px);
+        font-weight: bold;
+        position: absolute;
+        right: 2px;
+        cursor: pointer;
+
+        &:hover {
+            background: linear-gradient(70deg,  var(--secondary-color), var(--primary-color));
+            transition: all 0.3s ease-in-out;
+
+        }
+    }
+}

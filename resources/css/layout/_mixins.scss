@@ -1,0 +1,577 @@
+// resources/css/_mixins.scss
+
+// Breakpoints
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin on-extra-small {
+    @media (max-width: $sm - 1) {
+        @content;
+    }
+}
+
+@mixin on-small {
+    @media (min-width: $sm) and (max-width: $md - 1) {
+        @content;
+    }
+}
+
+@mixin on-medium {
+    @media (min-width: $md) and (max-width: $lg - 1) {
+        @content;
+    }
+}
+
+@mixin on-large {
+    @media (min-width: $lg) and (max-width: $xl - 1) {
+        @content;
+    }
+}
+
+@mixin on-extra-large {
+    @media (min-width: $xl) {
+        @content;
+    }
+}
+
+// Mixin for flexbox centering
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+// Mixin for flexbox centering
+@mixin flex-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+// Mixin for clearfix
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+//glassy{
+@mixin glassy() {
+    background: rgba( 255, 255, 255, 0.3 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 16px );
+    -webkit-backdrop-filter: blur( 16px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+// Mixin for responsive font size
+@mixin responsive-font-size($min-size, $max-size) {
+    font-size: $min-size;
+
+    @media (min-width: 768px) {
+        font-size: $max-size;
+    }
+}
+
+@mixin responsiveLogo($width, $height) {
+    width: $width;
+    height: $height;
+
+    @media (max-width: 768px) {
+        width: 33px;
+        height: 33px;
+    }
+
+    //@media (max-width: 480px) {
+    //    width: 25px;
+    //    height: 25px;
+    //}
+}
+
+
+// Mixin for transition
+@mixin transition($property, $duration) {
+    transition: $property $duration ease-in-out;
+}
+
+// Mixin for transition
+@mixin boxShadow() {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+// 1. Center Element Horizontally
+@mixin center-horizontally {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// 2. Center Element Vertically
+@mixin center-vertically {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+// 3. Center Element Horizontally and Vertically
+@mixin center-both {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// 4. Clearfix
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// 5. Ellipsis Overflow
+@mixin ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 6. Triangle Shape
+@mixin triangle($size, $color, $direction: up) {
+    width: 0;
+    height: 0;
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+
+    @if $direction == up {
+        border-bottom: $size solid $color;
+    } @else if $direction == down {
+        border-top: $size solid $color;
+    } @else if $direction == left {
+        border-right: $size solid $color;
+    } @else if $direction == right {
+        border-left: $size solid $color;
+    }
+}
+
+// 7. Transition
+@mixin transition($properties, $duration: 0.3s, $timing-function: ease) {
+    transition: $properties $duration $timing-function;
+}
+
+// 8. Rotate
+@mixin rotate($deg) {
+    transform: rotate($deg);
+}
+
+// 9. Scale
+@mixin scale($factor) {
+    transform: scale($factor);
+}
+
+// 10. Skew
+@mixin skew($x, $y) {
+    transform: skew($x, $y);
+}
+
+// 11. Border Radius
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+// 12. Box Shadow
+@mixin box-shadow($shadow) {
+    box-shadow: $shadow;
+}
+
+// 13. Text Shadow
+@mixin text-shadow($shadow) {
+    text-shadow: $shadow;
+}
+
+// 14. Placeholder Color
+@mixin placeholder($color) {
+    &::-webkit-input-placeholder {
+        color: $color;
+    }
+    &::-moz-placeholder {
+        color: $color;
+    }
+    &:-ms-input-placeholder {
+        color: $color;
+    }
+    &:-moz-placeholder {
+        color: $color;
+    }
+}
+
+// 14. gradient-animation
+@mixin colorAnimation($color1, $color2) {
+    @keyframes colorChange {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -200% 0;
+        }
+    }
+
+    background: linear-gradient(to right, $color1, $color2,$color1);
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: colorChange 2s linear infinite;
+}
+
+// 15. Flex Container
+@mixin flex-container($direction: row, $justify: flex-start, $align: stretch) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+// 16. Flex Item
+@mixin flex-item($flex: 0 1 auto, $align-self: auto) {
+    flex: $flex;
+    align-self: $align-self;
+}
+
+// 17. Hide Element
+@mixin hide {
+    display: none !important;
+}
+
+// 18. Display Flex
+@mixin display-flex {
+    display: flex;
+}
+
+// 19. Display Grid
+@mixin display-grid {
+    display: grid;
+}
+
+// 20. Absolute Center
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* tab-transition */
+@mixin tab-transition($property, $duration, $timing) {
+    transition: $property $duration $timing;
+}
+
+// Loop to create gap classes
+@each $key, $value in $spacing-scale {
+    .gap-#{$key} {
+        gap: $value;
+    }
+
+    .gap-x-#{$key} {
+        column-gap: $value;
+    }
+
+    .gap-y-#{$key} {
+        row-gap: $value;
+    }
+}
+
+// Define the text writable mixin
+@mixin text-writable($duration: 2s, $timing-function: linear, $delay: 0s) {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing $duration $timing-function $delay infinite alternate;
+}
+
+// Define the text color pulse mixin
+@mixin text-color-pulse($colors: ("#ff0000", "#00ff00", "#0000ff"), $duration: 3s, $timing-function: ease-in-out, $delay: 0s) {
+    animation: pulse-color $duration $timing-function $delay infinite;
+}
+
+// Define the keyframes for the border animation
+@keyframes borderLoop {
+    0% {
+        border-radius: 0;
+        border-width: 2px;
+        border-color: red;
+        transform: rotate(0deg);
+    }
+    25% {
+        border-radius: 25%;
+        border-width: 4px;
+        border-color: blue;
+        transform: rotate(90deg);
+    }
+    50% {
+        border-radius: 50%;
+        border-width: 6px;
+        border-color: green;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 75%;
+        border-width: 8px;
+        border-color: yellow;
+        transform: rotate(270deg);
+    }
+    100% {
+        border-radius: 100%;
+        border-width: 10px;
+        border-color: purple;
+        transform: rotate(360deg);
+    }
+}
+
+@mixin menu-magic(// Option/Parameter Default Settings.
+    $menu-position         : below,              // options:[above, below, left, right]
+    $menu-width            : 200px,              // any width in pixels
+    $menu-background-color : rgb(255,255,255,.51), // options [rgb, rga, hex]
+    $nubbin-size           : 10px,               // any pixel size
+    $menu-hidden-distance  : 20px,               // any pixel size
+    $menu-shadow-color     : rgba(0,0,0,0.3),    // rgba preferred
+    $menu-border-radius    : 0.75rem,                  // pixels or percentage
+    $is-menu               : true                // only adds hover box-shadow if true
+) {
+    display: inline-block;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+
+        > .submenu {
+            @extend .menu-show;
+            @if $menu-position == above {
+                top: 0;
+            }
+            @if $menu-position == below {
+                bottom: -15px;
+            }
+            @if $menu-position == left {
+                left: 0;
+            }
+            @if $menu-position == right {
+                right: -$menu-width;
+            }
+        }
+    }
+    .menu-hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+    .menu-show {
+        opacity: 1;
+        visibility: visible;
+        //background: red;
+        //display: flex;
+        //flex-direction: column;
+    }
+    .submenu {
+        margin: 0;
+        padding: 5px;
+        list-style: none;
+        line-height: 1.4rem;
+        background: $menu-background-color;
+        @include glassy();
+        @include boxShadow();
+        border-radius: $menu-border-radius;
+        transition: all 0.3s ease-in-out;
+        width: $menu-width;
+        @extend .menu-hidden;
+        position: absolute;
+        z-index: 2;
+        @if $menu-position == above {
+            padding-bottom: $nubbin-size;
+            top: 0 - $menu-hidden-distance;
+            left: 50%;
+            transform: translate(-50%, -100%);
+        }
+        @if $menu-position == below {
+            padding-top: $nubbin-size;
+            bottom: 0 - $menu-hidden-distance;
+            left: 50%;
+            transform: translate(-50%, 100%);
+        }
+        @if $menu-position == left {
+            padding-right: $nubbin-size;
+            top: 50%;
+            left: 0 - $menu-hidden-distance;
+            transform: translate(-100%, -50%);
+        }
+        @if $menu-position == right {
+            padding-left: $nubbin-size;
+            top: 50%;
+            right: -($menu-width + $nubbin-size) - $menu-hidden-distance;
+            transform: translate(0, -50%);
+        }
+
+        &:hover {
+            @if $is-menu == true {
+               @include boxShadow();
+            } @else {
+                box-shadow: none;
+            }
+        }
+
+        &:before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-width: $nubbin-size + 2;
+            border-style: solid;
+            position: absolute;
+            @if $menu-position == above {
+                bottom: -2px;
+                left: ($menu-width / 2);
+                margin-left: -( $nubbin-size + 2 );
+                border-top-color: lighten($menu-shadow-color, 70%);
+                border-right-color: transparent;
+                border-bottom-width: 0;
+                border-left-color: transparent;
+            }
+            @if $menu-position == below {
+                top: -10px;
+                left: ($menu-width / 2);
+                margin-left: -($nubbin-size + 2);
+                border-top-width: 0;
+                border-right-color: transparent;
+                border-bottom-color: lighten($menu-shadow-color, 70%);
+                border-left-color: transparent;
+            }
+            @if $menu-position == left {
+                top: 50%;
+                right: -2px;
+                margin-top: -$nubbin-size - 2;
+                border-top-color: transparent;
+                border-right-width: 0;
+                border-bottom-color: transparent;
+                border-left-color: lighten($menu-shadow-color, 70%);
+            }
+            @if $menu-position == right {
+                top: 50%;
+                left: -2px;
+                margin-top: -$nubbin-size - 2;
+                border-top-color: transparent;
+                border-right-color: lighten($menu-shadow-color, 70%);
+                border-bottom-color: transparent;
+                border-left-width: 0;
+            }
+        }
+
+        &:after {
+            //content: "";
+            width: 0;
+            height: 0;
+            border-width: $nubbin-size;
+            border-style: solid;
+            position: absolute;
+            @if $menu-position == above {
+                bottom: 0;
+                left: ($menu-width / 2);
+                margin-left: -$nubbin-size;
+                border-top-color: $menu-background-color;
+                border-right-color: transparent;
+                border-bottom-width: 0;
+                border-left-color: transparent;
+            }
+            @if $menu-position == below {
+                top: 0;
+                left: ($menu-width / 2);
+                margin-left: -$nubbin-size;
+                border-top-width: 0;
+                border-right-color: transparent;
+                border-bottom-color: $menu-background-color;
+                border-left-color: transparent;
+            }
+            @if $menu-position == left {
+                top: 50%;
+                right: 0;
+                margin-top: -$nubbin-size;
+                border-top-color: transparent;
+                border-right-width: 0;
+                border-bottom-color: transparent;
+                border-left-color: $menu-background-color;
+            }
+            @if $menu-position == right {
+                top: 50%;
+                left: 0;
+                margin-top: -$nubbin-size;
+                border-top-color: transparent;
+                border-right-color: $menu-background-color;
+                border-bottom-color: transparent;
+                border-left-width: 0;
+            }
+        }
+
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+
+            a {
+                color: var(--text-color-darkness) !important;
+                &:first-child {
+                    border-top-left-radius: $menu-border-radius;
+                    border-top-right-radius: $menu-border-radius;
+                }
+
+                &:last-child {
+                    border-bottom-left-radius: $menu-border-radius;
+                    border-bottom-right-radius: $menu-border-radius;
+                }
+            }
+        }
+
+        .nested-menu{
+            background: red;
+        }
+    }
+}
+
+.menu-trigger-below {
+    @include menu-magic($menu-background-color: lighten(#647ac7, 20%));
+}
+
+.menu-trigger-above {
+    @include menu-magic(above);
+}
+
+.menu-trigger-right {
+    @include menu-magic(right, $menu-width: 300px, $menu-background-color: #2e2e2e);
+}
+
+.menu-trigger-left {
+    @include menu-magic(left, $menu-border-radius: 10px, $menu-background-color: #900);
+}
+
+// CUSTOMIZATIONS OF MENU CONTENT
+.tooltip {
+    margin-left: 10px;
+    display: inline-block;
+    @include menu-magic(
+            above,
+        $menu-width: 155px,
+        $menu-background-color: #2e2e2e,
+        $nubbin-size: 8px,
+        $is-menu: false,
+        $menu-border-radius: 5px
+    );
+
+    .submenu {
+        color: #FFF;
+        text-align: center;
+        padding: $spacer-half !important;
+    }
+}
